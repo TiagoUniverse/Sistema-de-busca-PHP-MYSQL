@@ -16,7 +16,7 @@ require_once "conexao.php";
 <body>
     <h1>Lista de comidas</h1>
     <form action="">
-        <input name="busca" placeholder="Digite os termos de pesquisa" style="width: 200px;" type="text">
+        <input name="busca" placeholder="Digite os termos de pesquisa" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" style="width: 200px;" type="text">
         <button type="submit">Pesquisar</button>
     </form>
 
@@ -45,7 +45,14 @@ require_once "conexao.php";
                 </tr>
             <?php
             } else {
-
+                while($dados = $sql_query->fetch_assoc()){
+                    ?>
+                    <tr>
+                        <td><?php echo $dados['nome']; ?></td>
+                        <td><?php echo $dados['preco']; ?></td>
+                    </tr>
+                    <?php
+                }
             }
         }
         ?>
