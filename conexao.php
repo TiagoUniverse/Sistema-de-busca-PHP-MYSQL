@@ -1,8 +1,8 @@
 <?php
 
 $hostname = "localhost";
-$bancodedados = "site01";
-$usuario = "root1";
+$bancodedados = "padaria";
+$usuario = "root";
 $senha = "";
 
 $mysqli = new mysqli ($hostname, $usuario, $senha, $bancodedados);

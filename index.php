@@ -1,3 +1,13 @@
+<?php
+
+require_once "conexao.php";
+
+$pesquisa = $mysqli->real_escape_string( $_GET['busca']);
+$sql_code = "SELECT * from comida where nome LIKE '%$pesquisa%' or preco LIKE '%$pesquisa%' ";
+$sql_query = $mysqli->query($sql_code) or die("Error ao consultar: " . $mysqli->error);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
