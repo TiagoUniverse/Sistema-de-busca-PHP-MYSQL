@@ -21,6 +21,12 @@ require_once "conexao.php";
     </form>
 
     <br>
+    <a type="button" href="cadastro.php">Cadastrar comidas</a>
+    <a type="button" href="cadastro.php">Cadastrar comidas</a>
+    <a type="button" href="cadastro.php">Cadastrar comidas</a>
+    <br>
+
+    <br>
     <table border="1" width="400px">
         <tr>
             <th>Nome</th>
