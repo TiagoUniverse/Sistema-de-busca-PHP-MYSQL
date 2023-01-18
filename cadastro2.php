@@ -1,13 +1,13 @@
 <?php
 require_once "Conexao.php";
 
-$nome = $_POST['nome'];
+$nome =  $_POST['nome'];
 $preco = intval ($_POST['preco']);
 
 //Validation if the register already exist in db
 $nome_sql = $mysqli->real_escape_string($nome);
 $preco_sql = $mysqli->real_escape_string($preco);
-$sql_code = "SELECT * from comida where nome = '{$nome_sql}' and preco = '{$preco}' ";
+$sql_code = "SELECT * from comida where nome = '{$nome_sql}' and preco = '{$preco_sql}' ";
 $sql_query = $mysqli->query($sql_code) or die("Error ao cadastrar: " . $mysqli->error);
 
 
