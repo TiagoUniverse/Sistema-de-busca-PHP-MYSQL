@@ -10,7 +10,6 @@ $preco_sql = $mysqli->real_escape_string($preco);
 $sql_code = "SELECT * from comida where nome = '{$nome_sql}' and preco = '{$preco_sql}' ";
 $sql_query = $mysqli->query($sql_code) or die("Error ao cadastrar: " . $mysqli->error);
 
-
 //Validation
 if ($nome == null) {
     $mensagem = "Por favor, digite um nome de comida.";

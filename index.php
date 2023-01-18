@@ -22,15 +22,15 @@ require_once "conexao.php";
 
     <br>
     <a type="button" href="cadastro.php">Cadastrar comidas</a>
-    <a type="button" href="cadastro.php">Cadastrar comidas</a>
-    <a type="button" href="cadastro.php">Cadastrar comidas</a>
     <br>
 
     <br>
-    <table border="1" width="400px">
+    <table border="1" width="700px">
         <tr>
             <th>Nome</th>
             <th>Preço</th>
+            <th>Alterar</th>
+            <th>Deletar</th>
         </tr>
         <?php
         if (!isset($_GET['busca'])) {
@@ -56,6 +56,9 @@ require_once "conexao.php";
                     <tr>
                         <td><?php echo $dados['nome']; ?></td>
                         <td><?php echo $dados['preco']; ?></td>
+                        <?php $link = "alterar.php?id=" . $dados['id']; ?>
+                        <td><a href="<?php echo $link; ?>" ;>Alterar registro </a></td>
+                        <td><a href="deletar.php">Alterar registro </a></td>
                     </tr>
                     <?php
                 }
