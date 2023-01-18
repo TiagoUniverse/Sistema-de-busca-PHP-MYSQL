@@ -1,7 +1,13 @@
 <?php
 // Tiago César da Silva Lopes || 18/01/23
+require_once "conexao.php";
 
 $id_comida = $_POST['id_comida'];
+
+$sql_code = "SELECT * from comida where id = '{$id_comida}' ";
+$sql_query = $mysqli->query($sql_code) or die("Error na alteração: " . $mysqli->error);
+$dados = $sql_query->fetch_assoc();
+
 
 ?>
 
@@ -19,14 +25,14 @@ $id_comida = $_POST['id_comida'];
     <h1>Alteração de registros</h1>
     <a type="button" href="index.php">Voltar</a>
 
-    <form method="post" action="cadastro2.php">
+    <form method="post" action="alterar2.php">
         <h2>Altere o registro abaixo:</h2>
         <h7>Nome do alimento:</h7>
-        <input type="text" name="nome" value="<?php ?>"  placeholder="Nome do alimento:">
+        <input type="text" name="nome" value="<?php echo $dados['nome'] ; ?>"  placeholder="Nome do alimento:">
 
         <br><br>
         <h7>Preço:</h7>
-        <input type="int" name="preco" placeholder="Preço: (1.00)">
+        <input type="int" name="preco" value="<?php echo $dados['preco'] ; ?>" placeholder="Preço: (1.00)">
 
         <br><br>
         <button type="submit">Cadastrar</button>
