@@ -16,7 +16,7 @@ require_once "conexao.php";
 <body>
     <h1>Lista de comidas</h1>
     <form action="">
-        <input name="busca" placeholder="Digite os termos de pesquisa" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" style="width: 200px;" type="text">
+        <input name="busca" placeholder="Digite os termos de pesquisa" value="<?php if (isset($_GET['busca'])) echo $_GET['busca']; ?>" style="width: 200px;" type="text">
         <button type="submit">Pesquisar</button>
     </form>
 
@@ -38,7 +38,7 @@ require_once "conexao.php";
             <tr>
                 <td colspan="2">Digite algo para pesquisar...</td>
             </tr>
-        <?php
+            <?php
         } else {
             $pesquisa = $mysqli->real_escape_string($_GET['busca']);
             $sql_code = "SELECT * from comida where nome LIKE '%$pesquisa%' or preco LIKE '%$pesquisa%' ";
@@ -49,18 +49,20 @@ require_once "conexao.php";
                 <tr>
                     <td colspan="2">Nenhum resultado encontrado.</td>
                 </tr>
-            <?php
+                <?php
             } else {
-                while($dados = $sql_query->fetch_assoc()){
-                    ?>
+                while ($dados = $sql_query->fetch_assoc()) {
+                ?>
                     <tr>
                         <td><?php echo $dados['nome']; ?></td>
                         <td><?php echo $dados['preco']; ?></td>
-                        <?php $link = "alterar.php?id=" . $dados['id']; ?>
-                        <td><a href="<?php echo $link; ?>" ;>Alterar registro </a></td>
+                        <form method="POST" action="alterar.php">
+                            <input type="hidden" name="id_comida" value="<?php echo $dados['id'] ;?>">
+                            <td><button type="submit">Alterar registro</button></td>
+                        </form>
                         <td><a href="deletar.php">Alterar registro </a></td>
                     </tr>
-                    <?php
+        <?php
                 }
             }
         }
