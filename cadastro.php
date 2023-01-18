@@ -19,11 +19,11 @@
     <form method="post" action="cadastro2.php">
         <h2>Preencha os campos abaixo:</h2>
         <h7>Nome do alimento:</h7>
-        <input type="text" placeholder="Nome do alimento:">
+        <input type="text" name="nome" placeholder="Nome do alimento:">
 
         <br><br>
         <h7>Preço:</h7>
-        <input type="text" placeholder="Preço:">
+        <input type="int" name="preco" placeholder="Preço: (1.00)">
 
         <br><br>
         <button type="submit">Cadastrar</button>
