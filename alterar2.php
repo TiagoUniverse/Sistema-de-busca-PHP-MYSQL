@@ -1,6 +1,7 @@
 <?php
 require_once "Conexao.php";
 
+$id_comida = $_POST['id_comida'];
 $nome =  $_POST['nome'];
 $preco = intval ($_POST['preco']);
 
@@ -8,7 +9,7 @@ $preco = intval ($_POST['preco']);
 $nome_sql = $mysqli->real_escape_string($nome);
 $preco_sql = $mysqli->real_escape_string($preco);
 $sql_code = "SELECT * from comida where nome = '{$nome_sql}' and preco = '{$preco_sql}' ";
-$sql_query = $mysqli->query($sql_code) or die("Error ao cadastrar: " . $mysqli->error);
+$sql_query = $mysqli->query($sql_code) or die("Error ao verificar no banco: " . $mysqli->error);
 
 //Validation
 if ($nome == null) {
@@ -24,8 +25,8 @@ if ($nome == null) {
 } else {
     $mensagem = "Registro alterado com sucesso!";
 
-    $sql_code = "INSERT into comida (nome, preco) values ('{$nome_sql}' , '{$preco_sql}' )";
-    $mysqli->query($sql_code) or die("Error ao cadastrar: " . $mysqli->error);
+    $sql_code = "UPDATE comida SET nome = '{$nome_sql}' , preco = '{$preco_sql}' where id = '{$id_comida}' ";
+    $mysqli->query($sql_code) or die("Error ao alterar: " . $mysqli->error);
 }   
 
 ?>
