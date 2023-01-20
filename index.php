@@ -37,7 +37,7 @@ require_once "conexao.php";
         if (!isset($_GET['busca'])) {
         ?>
             <tr>
-                <td colspan="2">Digite algo para pesquisar...</td>
+                <td colspan="5">Digite algo para pesquisar...</td>
             </tr>
             <?php
         } else {
