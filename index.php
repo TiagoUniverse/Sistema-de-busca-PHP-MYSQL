@@ -27,6 +27,7 @@ require_once "conexao.php";
     <br>
     <table border="1" width="700px">
         <tr>
+            <th>Número</th>
             <th>Nome</th>
             <th>Preço</th>
             <th>Alterar</th>
@@ -51,18 +52,24 @@ require_once "conexao.php";
                 </tr>
                 <?php
             } else {
+                $contador = 1;
                 while ($dados = $sql_query->fetch_assoc()) {
                 ?>
                     <tr>
+                        <td><?php echo $contador . "ª"; ?></td>
                         <td><?php echo $dados['nome']; ?></td>
                         <td><?php echo $dados['preco']; ?></td>
                         <form method="POST" action="alterar.php">
-                            <input type="hidden" name="id_comida" value="<?php echo $dados['id'] ;?>">
+                            <input type="hidden" name="id_comida" value="<?php echo $dados['id']; ?>">
                             <td><button type="submit">Alterar registro</button></td>
                         </form>
-                        <td><a href="deletar.php">Alterar registro </a></td>
+                        <form method="POST" action="deletar.php">
+                            <input type="hidden" name="id_comida" value="<?php echo $dados['id']; ?>">
+                            <td><button type="submit">Excluir</button></td>
+                        </form>
                     </tr>
         <?php
+                    $contador++;
                 }
             }
         }
